@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\habitacionController;
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\ReservaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +37,9 @@ Route::prefix('personal')->group(function () {
     Route::put('/update/{id}',[PersonalController::class,'updatepersonal']);
     Route::delete('/delete/{id}',[PersonalController::class,'deletepersonal']);
     Route::get('/{id}',[PersonalController::class,'showpersonal']);
+});
+
+Route::prefix('reserva')->group(function () {
+    Route::get('/all',[ReservaController::class,'getReserva']);
+    Route::post('/new',[ReservaController::class,'newReserva']);
 });
