@@ -42,4 +42,7 @@ Route::prefix('personal')->group(function () {
 Route::prefix('reserva')->group(function () {
     Route::get('/all',[ReservaController::class,'getReserva']);
     Route::post('/new',[ReservaController::class,'newReserva']);
+    Route::put('/update/{id}',[ReservaController::class,'updateReserva']);//pendiente
+    Route::delete('/delete/{id}',[ReservaController::class,'deleteReserva']);    
+
 });

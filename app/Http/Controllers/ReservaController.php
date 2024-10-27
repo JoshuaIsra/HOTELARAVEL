@@ -18,4 +18,14 @@ class ReservaController extends Controller
     return Response::json($reserva);
     }
 
+    public function deleteReserva($id){
+        $reserva =Reserva::find($id);
+
+        if(!$reserva){
+            return Response::json(['message'=>'Reserva no encontrada'],404);
+        }
+        $reserva->delete();
+        return Response::json(['message'=>'Reserva eliminada'],200);
+    }
+
 }
