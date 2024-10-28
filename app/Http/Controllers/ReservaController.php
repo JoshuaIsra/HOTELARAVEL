@@ -28,4 +28,24 @@ class ReservaController extends Controller
         return Response::json(['message'=>'Reserva eliminada'],200);
     }
 
+    public function updateReserva(Request $request, $id){
+        $request->validate([
+            'fecha_reserva' => 'required|date',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date',
+            'cliente_id' => 'required|exists:clientes,id',
+            'habitacion_id' => 'required|exists:habitacion,id',
+            'estadoReserva' => 'required|string',
+        ]);
+
+        $reserva = Reserva::find($id);
+
+        if (!$reserva) {
+            return response()->json(['error' => 'Reserva no encontrada'], 404);
+        }
+        $reserva->update($request->all());
+        return response()->json(['success' => 'Reserva actualizada exitosamente', 'reserva' => $reserva], 200);
+    
+    }
+
 }

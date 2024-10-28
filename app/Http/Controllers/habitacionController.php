@@ -9,7 +9,7 @@ class habitacionController extends Controller
 {
     public function gethabitacion()
     {
-        $habitacion = Habitacion::all();
+        $habitacion = Habitacion::whith('cliente')->get();
         if($habitacion->isEmpty()){
             return response()->json(['message'=>'No hay habitaciones registradas'],404);
         }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\habitacionController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ReservaController;
@@ -43,6 +44,18 @@ Route::prefix('reserva')->group(function () {
     Route::get('/all',[ReservaController::class,'getReserva']);
     Route::post('/new',[ReservaController::class,'newReserva']);
     Route::put('/update/{id}',[ReservaController::class,'updateReserva']);//pendiente
-    Route::delete('/delete/{id}',[ReservaController::class,'deleteReserva']);    
+    Route::delete('/delete/{id}',[ReservaController::class,'deleteReserva']);  
+    Route::get('/{id}',[ReservaController::class,'showReserva']);
 
 });
+
+Route::prefix('factura')->group(function () {
+    Route::get('/all',[FacturaController::class,'getFactura']);
+    Route::post('/new',[FacturaController::class,'newFactura']);
+    Route::put('/update/{id}',[FacturaController::class,'updateFactura']);
+    Route::delete('/delete/{id}',[FacturaController::class,'deleteFactura']); 
+    Route::get('/{id}',[FacturaController::class,'showFactura']);   
+
+});
+
+
