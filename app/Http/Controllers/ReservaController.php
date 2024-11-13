@@ -48,4 +48,12 @@ class ReservaController extends Controller
     
     }
 
+    public function showReserva($id){
+        $reserva = Reserva::find($id);
+        if(!$reserva){
+            return Response::json(['message'=>'Reserva no encontrada'],404);
+        }
+        return Response::json($reserva);
+    }
+
 }
