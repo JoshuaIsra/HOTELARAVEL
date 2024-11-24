@@ -24,7 +24,8 @@ public function store(Request $request){
                 'persona.direccion' => 'required|string',
                 'personal.rol' => 'required|string',
                 'personal.turno' => 'required|string',
-                'personal.salario' => 'required|numeric'
+                'personal.salario' => 'required|numeric',
+                'personal.type_personal' => 'required|string'
             ]);
 
             // Crear la persona
@@ -35,7 +36,8 @@ public function store(Request $request){
                 'persona_id' => $persona->id,
                 'rol' => $request->input('personal.rol'),
                 'turno' => $request->input('personal.turno'),
-                'salario' => $request->input('personal.salario')
+                'salario' => $request->input('personal.salario'),
+                'type_personal' => $request->input('personal.type_personal')
             ]);
 
             DB::commit();

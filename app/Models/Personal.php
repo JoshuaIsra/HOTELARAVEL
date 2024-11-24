@@ -8,8 +8,7 @@ class Personal extends Persona
 {
     
     protected $table = 'personales';
-    protected $fillable = ['persona_id',
-        'rol', 'turno', 'salario'];
+    protected $fillable = ['persona_id','rol', 'turno', 'salario','type_personal'];
 
     public function persona()
     {

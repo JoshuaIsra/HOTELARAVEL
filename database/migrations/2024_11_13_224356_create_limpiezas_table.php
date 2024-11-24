@@ -6,23 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('personales', function (Blueprint $table) {
+        Schema::create('limpiezas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('persona_id');
+            $table->foreignId('persona_id')->constrained('personas');
             $table->string('rol');
             $table->string('turno');
-            $table->decimal('salario',8,2);
-            $table->string('type_personal');
-            $table->foreign('persona_id')->references('id')->on('personas')->onDelete('cascade');
+            $table->decimal('salario', 8, 2);
+            $table->string('area')->nullable();
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('personales');
+        Schema::dropIfExists('limpiezas');
     }
 };

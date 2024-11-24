@@ -17,6 +17,7 @@ return new class extends Migration
             $table->json('servicios');
             $table->integer('numero_camas');
             $table->string('tipo_cama');
+            $table->string('tipo_habitacion');
             $table->timestamps();
         });
     }

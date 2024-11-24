@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\habitacionController;
+use App\Http\Controllers\LimpiezaController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ReservaController;
 use Illuminate\Http\Request;
@@ -55,6 +56,14 @@ Route::prefix('factura')->group(function () {
     Route::put('/update/{id}',[FacturaController::class,'updateFactura']);
     Route::delete('/delete/{id}',[FacturaController::class,'deleteFactura']); 
     Route::get('/{id}',[FacturaController::class,'showFactura']);   
+
+});
+Route::prefix('limpieza')->group(function () {
+    Route::get('/all',[LimpiezaController::class,'getLimpieza']);
+    Route::post('/new',[LimpiezaController::class,'newLimpieza']);
+    Route::put('/update/{id}',[LimpiezaController::class,'updateLimpieza']);
+    Route::delete('/delete/{id}',[LimpiezaController::class,'deleteLimpieza']); 
+    Route::get('/{id}',[LimpiezaController::class,'showLimpieza']);   
 
 });
 
