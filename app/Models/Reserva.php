@@ -18,11 +18,10 @@ class Reserva extends Model
     'habitacion_id', 
     'estadoreserva',
     'monto_total'];
-
+    
     public function cliente(){
         return $this->belongsTo(Cliente::class, 'cliente_id');
     }   
-
     public function Habitacion(){
         return $this->belongsTo(Habitacion::class, 'habitacion_id');
     }

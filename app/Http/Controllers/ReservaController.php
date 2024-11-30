@@ -9,8 +9,9 @@ use Response;
 class ReservaController extends Controller
 {
     public function getReserva(){
-        $reserva =Reserva::all();
-        return Response::json($reserva);
+        // $reserva =Reserva::all();
+        $reserva = Reserva::with(['habitacion','cliente'])->get(); 
+        return Response::json($reserva );
 
     }
     public function newReserva(Request $request){
@@ -49,11 +50,12 @@ class ReservaController extends Controller
     }
 
     public function showReserva($id){
-        $reserva = Reserva::find($id);
+        $reserva = Reserva::with('habitacion')->find($id);
         if(!$reserva){
             return Response::json(['message'=>'Reserva no encontrada'],404);
         }
         return Response::json($reserva);
     }
+
 
 }
